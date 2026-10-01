@@ -19,6 +19,16 @@ Login needs, in the Supabase project (Authentication):
 - **URL Configuration → Redirect URLs**: `http://localhost:3000/**` (add the production URL when you deploy).
 - Email link login works without extra setup.
 
+## Deploy (Vercel)
+Import the repo at https://vercel.com/new (framework: Next.js, nothing to change). Add these in **Settings → Environment Variables** for Production, Preview and Development, then redeploy (`NEXT_PUBLIC_*` values are baked into the client bundle at build time, so changing them needs a new deployment):
+
+| Name | Value |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | your Supabase publishable key |
+
+Then add the Vercel URL in Supabase → Authentication → URL Configuration (**Site URL** and **Redirect URLs**: `https://<your-app>.vercel.app/**`).
+
 ## Scripts
 | | |
 |---|---|
